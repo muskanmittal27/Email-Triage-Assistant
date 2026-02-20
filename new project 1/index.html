@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartMail AI - Intelligent Email Management</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gray-50 font-inter">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-envelope-open-text text-white text-sm"></i>
+                        </div>
+                        <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                            SmartMail AI
+                        </h1>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#" class="nav-link active" data-page="home">
+                        <i class="fas fa-home mr-2"></i>Home
+                    </a>
+                    <a href="#" class="nav-link" data-page="dashboard">
+                        <i class="fas fa-tachometer-alt mr-2"></i>Dashboard
+                    </a>
+                    <a href="#" class="nav-link" data-page="settings">
+                        <i class="fas fa-cog mr-2"></i>Settings
+                    </a>
+                    <div class="relative">
+                        <button id="userMenuBtn" class="flex items-center space-x-2 text-gray-700 hover:text-gray-900">
+                            <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+                                <i class="fas fa-user text-white text-sm"></i>
+                            </div>
+                            <span id="userName">Guest</span>
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <div id="userMenu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-50">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i class="fas fa-user mr-2"></i>Profile
+                            </a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i class="fas fa-bell mr-2"></i>Notifications
+                            </a>
+                            <hr class="my-2">
+                            <a href="#" id="logoutBtn" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:hidden">
+                    <button id="mobileMenuBtn" class="text-gray-700 hover:text-gray-900">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <div class="px-4 py-3 space-y-3">
+                <a href="#" class="nav-link block py-2" data-page="home">Home</a>
+                <a href="#" class="nav-link block py-2" data-page="dashboard">Dashboard</a>
+                <a href="#" class="nav-link block py-2" data-page="settings">Settings</a>
+                <hr>
+                <a href="#" id="logoutBtnMobile" class="block py-2 text-red-600">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="mainContent">
+        <!-- Home Page -->
+        <div id="homePage" class="page-content">
+            <!-- Hero Section -->
+            <section class="bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 text-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+                    <div class="text-center">
+                        <h2 class="text-5xl font-bold mb-6">
+                            Transform Your Email Chaos into
+                            <span class="text-yellow-300">Intelligent Productivity</span>
+                        </h2>
+                        <p class="text-xl mb-8 max-w-3xl mx-auto opacity-90">
+                            SmartMail AI automatically compresses long threads, categorizes messages, and generates context-aware replies - saving you hours every week.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <button id="getStartedBtn" class="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors transform hover:scale-105">
+                                <i class="fas fa-rocket mr-2"></i>Get Started Free
+                            </button>
+                            <button id="demoBtn" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">
+                                <i class="fas fa-play mr-2"></i>Watch Demo
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Animated Email Preview -->
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+                    <div class="bg-white rounded-2xl shadow-2xl p-8 transform rotate-1 hover:rotate-0 transition-transform">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-green-600"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-gray-900 font-semibold">Email Compressed Successfully</h3>
+                                    <p class="text-gray-600 text-sm">AI Summary Generated</p>
+                                </div>
+                            </div>
+                            <div class="text-green-600 font-semibold">85% Reduced</div>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-envelope text-white text-xs"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="text-sm text-gray-600 mb-1">Original: 2,847 characters</div>
+                                    <div class="text-sm text-gray-900 mb-2">Compressed: 312 characters</div>
+                                    <div class="text-xs text-gray-500">Key points: Meeting rescheduled to Friday 3PM, Client needs budget approval, Team to prepare presentation</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="py-20 bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <h3 class="text-4xl font-bold text-gray-900 mb-4">AI-Powered Email Intelligence</h3>
+                        <p class="text-xl text-gray-600 max-w-3xl mx-auto">Experience the future of email management with cutting-edge AI technology</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- Thread Compression -->
+                        <div class="text-center group">
+                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-blue-200 transition-colors">
+                                <i class="fas fa-compress-alt text-blue-600 text-2xl"></i>
+                            </div>
+                            <h4 class="text-xl font-semibold text-gray-900 mb-3">Thread Compression</h4>
+                            <p class="text-gray-600">Automatically compress long email threads into concise summaries while preserving key decisions and action items.</p>
+                        </div>
+                        
+                        <!-- Smart Categorization -->
+                        <div class="text-center group">
+                            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-purple-200 transition-colors">
+                                <i class="fas fa-tags text-purple-600 text-2xl"></i>
+                            </div>
+                            <h4 class="text-xl font-semibold text-gray-900 mb-3">Smart Categorization</h4>
+                            <p class="text-gray-600">AI automatically categorizes emails with confidence scores and allows manual override for perfect organization.</p>
+                        </div>
+                        
+                        <!-- Auto-Response -->
+                        <div class="text-center group">
+                            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-green-200 transition-colors">
+                                <i class="fas fa-reply text-green-600 text-2xl"></i>
+                            </div>
+                            <h4 class="text-xl font-semibold text-gray-900 mb-3">AI Auto-Response</h4>
+                            <p class="text-gray-600">Generate context-aware replies in multiple tones and styles, fully editable before sending.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="py-16 bg-gray-50">
+                <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+                    <h3 class="text-3xl font-bold text-gray-900 mb-4">Ready to Transform Your Inbox?</h3>
+                    <p class="text-xl text-gray-600 mb-8">Join thousands of professionals who save 5+ hours weekly with SmartMail AI</p>
+                    <button id="startFreeTrialBtn" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transition-all transform hover:scale-105">
+                        <i class="fas fa-magic mr-2"></i>Start Free Trial
+                    </button>
+                </div>
+            </section>
+        </div>
+
+        <!-- Dashboard Page -->
+        <div id="dashboardPage" class="page-content hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <!-- Dashboard Header -->
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900">Email Dashboard</h2>
+                        <p class="text-gray-600 mt-1">AI-powered email management at your fingertips</p>
+                    </div>
+                    <div class="flex items-center space-x-4 mt-4 md:mt-0">
+                        <button id="refreshEmailsBtn" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                            <i class="fas fa-sync-alt mr-2"></i>Refresh
+                        </button>
+                        <button id="connectEmailBtn" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors">
+                            <i class="fas fa-plus mr-2"></i>Add Email
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center">
+                            <div class="bg-red-100 rounded-lg p-3">
+                                <i class="fas fa-exclamation-triangle text-red-600 text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm font-medium text-gray-600">Urgent</p>
+                                <p class="text-2xl font-bold text-gray-900" id="urgentCount">0</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center">
+                            <div class="bg-yellow-100 rounded-lg p-3">
+                                <i class="fas fa-clock text-yellow-600 text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm font-medium text-gray-600">Follow-Up</p>
+                                <p class="text-2xl font-bold text-gray-900" id="followupCount">0</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center">
+                            <div class="bg-green-100 rounded-lg p-3">
+                                <i class="fas fa-check-circle text-green-600 text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm font-medium text-gray-600">Processed</p>
+                                <p class="text-2xl font-bold text-gray-900" id="processedCount">0</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center">
+                            <div class="bg-purple-100 rounded-lg p-3">
+                                <i class="fas fa-brain text-purple-600 text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm font-medium text-gray-600">AI Suggestions</p>
+                                <p class="text-2xl font-bold text-gray-900" id="aiSuggestionsCount">0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filters and Search -->
+                <div class="bg-white rounded-lg shadow p-6 mb-8">
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="flex-1">
+                            <input type="text" id="searchInput" placeholder="Search emails..." 
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <select id="categoryFilter" class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                            <option value="">All Categories</option>
+                            <option value="work">Work</option>
+                            <option value="urgent">Urgent</option>
+                            <option value="followup">Follow-Up</option>
+                            <option value="meetings">Meetings</option>
+                            <option value="promotions">Promotions</option>
+                            <option value="personal">Personal</option>
+                            <option value="spam">Spam</option>
+                        </select>
+                        <select id="priorityFilter" class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                            <option value="">All Priorities</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Email List -->
+                <div class="bg-white rounded-lg shadow">
+                    <div class="px-6 py-4 border-b border-gray-200">
+                        <h3 class="text-lg font-semibold text-gray-900">Your Emails</h3>
+                    </div>
+                    <div id="emailList" class="divide-y divide-gray-200">
+                        <!-- Email items will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Page -->
+        <div id="settingsPage" class="page-content hidden">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <div class="mb-8">
+                    <h2 class="text-3xl font-bold text-gray-900">Settings</h2>
+                    <p class="text-gray-600 mt-1">Customize your SmartMail AI experience</p>
+                </div>
+
+                <!-- AI Settings -->
+                <div class="bg-white rounded-lg shadow mb-8">
+                    <div class="px-6 py-4 border-b border-gray-200">
+                        <h3 class="text-lg font-semibold text-gray-900">AI Settings</h3>
+                    </div>
+                    <div class="p-6 space-y-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h4 class="text-sm font-medium text-gray-900">Auto-Reply</h4>
+                                <p class="text-sm text-gray-600">Automatically generate reply suggestions</p>
+                            </div>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="autoReplyToggle" class="sr-only peer" checked>
+                                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                            </label>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-900 mb-2">Default Reply Tone</label>
+                            <select id="defaultTone" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                <option value="professional">Professional</option>
+                                <option value="friendly">Friendly</option>
+                                <option value="concise">Concise</option>
+                                <option value="detailed">Detailed</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-900 mb-2">AI Confidence Threshold</label>
+                            <input type="range" id="confidenceThreshold" min="0" max="100" value="75" class="w-full">
+                            <div class="flex justify-between text-xs text-gray-600 mt-1">
+                                <span>0%</span>
+                                <span id="confidenceValue">75%</span>
+                                <span>100%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Categories -->
+                <div class="bg-white rounded-lg shadow mb-8">
+                    <div class="px-6 py-4 border-b border-gray-200">
+                        <h3 class="text-lg font-semibold text-gray-900">Email Categories</h3>
+                    </div>
+                    <div class="p-6">
+                        <div id="categoryList" class="space-y-3">
+                            <!-- Categories will be populated here -->
+                        </div>
+                        <button id="addCategoryBtn" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                            <i class="fas fa-plus mr-2"></i>Add Category
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Connected Accounts -->
+                <div class="bg-white rounded-lg shadow mb-8">
+                    <div class="px-6 py-4 border-b border-gray-200">
+                        <h3 class="text-lg font-semibold text-gray-900">Connected Accounts</h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
+                                        <i class="fab fa-google text-red-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium text-gray-900">Gmail</h4>
+                                        <p class="text-sm text-gray-600">user@gmail.com</p>
+                                    </div>
+                                </div>
+                                <button class="text-red-600 hover:text-red-700">
+                                    <i class="fas fa-unlink"></i>
+                                </button>
+                            </div>
+                            <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                                        <i class="fab fa-microsoft text-blue-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium text-gray-900">Outlook</h4>
+                                        <p class="text-sm text-gray-600">user@outlook.com</p>
+                                    </div>
+                                </div>
+                                <button class="text-red-600 hover:text-red-700">
+                                    <i class="fas fa-unlink"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <button id="addAccountBtn" class="mt-4 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors">
+                            <i class="fas fa-plus mr-2"></i>Add Account
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Save Settings -->
+                <div class="flex justify-end">
+                    <button id="saveSettingsBtn" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                        <i class="fas fa-save mr-2"></i>Save Settings
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Authentication Modal -->
+        <div id="authModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+            <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
+                <div class="text-center mb-6">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-lock text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">Welcome to SmartMail AI</h3>
+                    <p class="text-gray-600 mt-2">Sign in to access your intelligent email assistant</p>
+                </div>
+                
+                <form id="authForm" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input type="email" id="authEmail" required 
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                        <input type="password" id="authPassword" required 
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                        Sign In
+                    </button>
+                </form>
+                
+                <div class="mt-6 text-center">
+                    <div class="text-sm text-gray-600 mb-4">Or continue with</div>
+                    <div class="flex space-x-4">
+                        <button id="googleAuthBtn" class="flex-1 bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition-colors">
+                            <i class="fab fa-google mr-2"></i>Google
+                        </button>
+                        <button id="microsoftAuthBtn" class="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                            <i class="fab fa-microsoft mr-2"></i>Microsoft
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Email Detail Modal -->
+        <div id="emailDetailModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+            <div class="bg-white rounded-lg max-w-4xl w-full mx-4 max-h-[90vh] overflow-hidden">
+                <div class="flex items-center justify-between p-6 border-b border-gray-200">
+                    <h3 class="text-xl font-bold text-gray-900">Email Details</h3>
+                    <button id="closeEmailDetail" class="text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div id="emailDetailContent" class="p-6 overflow-y-auto max-h-[calc(90vh-80px)]">
+                    <!-- Email content will be populated here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+            <div class="bg-white rounded-lg p-8 text-center">
+                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+                <p class="text-gray-700">Processing...</p>
+            </div>
+        </div>
+
+        <!-- Toast Notifications -->
+        <div id="toastContainer" class="fixed top-4 right-4 z-50 space-y-2">
+            <!-- Toast notifications will be appended here -->
+        </div>
+    </main>
+
+    <!-- JavaScript -->
+    <script src="js/smartmail.js"></script>
+</body>
+</html>
